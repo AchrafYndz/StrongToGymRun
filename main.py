@@ -36,7 +36,6 @@ for item in strongList:
     newTime = timeObject.strftime("%H:%M:%S")
     gymRunItem.append(newTime)
 
-
     ################### handling exercise names #####################
     strongExerciseName = item[2]
     try:
@@ -51,7 +50,11 @@ for item in strongList:
 
     ############## handling weight #############
     weight = item[4]
-    gymRunItem.append(weight)
+    bodyWeightExercises = ["Knee Raise (Captain's Chair)", "Plank", "Hanging Knee Raise", "Hanging Leg Raise"]
+    if weight == "" and strongExerciseName not in bodyWeightExercises:
+            gymRunItem.append("0")
+    else:
+        gymRunItem.append(weight)
 
     ########### handling reps #############
     reps = item[6]
@@ -60,10 +63,8 @@ for item in strongList:
     ########## handling notes ############
     notes = item[10]
     gymRunItem.append(notes)
-
+    print(gymRunItem)
     gymRunList.append(gymRunItem)
-
-# print(gymRunList)
 
 with open("out.csv", "w") as outputFile:
     newCsvFile = csv.writer(outputFile, lineterminator='\n')
