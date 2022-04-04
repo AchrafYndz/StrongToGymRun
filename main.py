@@ -63,7 +63,7 @@ for item in strongList:
     ########## handling notes ############
     notes = item[10]
     gymRunItem.append(notes)
-    print(gymRunItem)
+    # print(gymRunItem)
     gymRunList.append(gymRunItem)
 
 with open("out.csv", "w") as outputFile:
