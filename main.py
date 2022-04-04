@@ -10,11 +10,11 @@ with open("csv_input/myStrongData.csv", "r") as inputFile:
     for row in myCsvFile:
         strongList.append(row)
 
-prevDay = ""
+prevTimeObject = datetime.datetime.now()
 for item in strongList:
     gymRunItem = []
     if item == strongList[0]:
-        gymRunList.append(["Date", "Time", "Exercise", "Set", "Weigth", "Reps", "Note"])
+        gymRunList.append(["Date", "Time", "Exercise", "Set", "Weight", "Reps", "Note"])
         continue
 
     ################### handling date and time ######################
@@ -24,19 +24,18 @@ for item in strongList:
     # convert date format
     date = dateAndTimeList[0]
     dateList = date.split("-")
-    gymRunDate = dateList[2] + "." + dateList[1] + "." + dateList[0][2:]
-    gymRunItem.append(gymRunDate)
-    # append time data
     timeString = dateAndTimeList[1]
     timeObject = datetime.datetime(int(dateList[0]), int(dateList[1]), int(dateList[2]), int(timeString[:2]),
                                    int(timeString[3:5]), int(timeString[6:]))
-    # if same exercise, change time entry
-    if prevDay == item[2]:
-        td = datetime.timedelta(seconds=1)
-        timeObject = prevTime + td
-    prevTime = timeObject
-    timeString = timeObject.strftime("%H:%M:%S")
-    gymRunItem.append(timeString)
+    if 0 <= abs(prevTimeObject - timeObject).total_seconds() <= 86400:
+        timeObject = prevTimeObject + datetime.timedelta(seconds=1)
+    newDay = timeObject.strftime("%d.%m.%y")
+    gymRunItem.append(newDay)
+    prevTimeObject = timeObject
+
+    newTime = timeObject.strftime("%H:%M:%S")
+    gymRunItem.append(newTime)
+
 
     ################### handling exercise names #####################
     strongExerciseName = item[2]
