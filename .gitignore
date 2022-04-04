@@ -1,1 +1,4 @@
 venv
+.idea
+csv_input/myStrongData.csv
+out.csv
