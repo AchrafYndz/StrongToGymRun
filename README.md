@@ -14,6 +14,8 @@ git clone https://github.com/YAchrafY/StrongToGymRun.git
 Or alternatively, press the green "Code" button in the top right corner and select "download Zip", then extract the .zip
 file in your preferred working directory.
 
+![img_1.png](images/githubButton.png)
+
 ## Usage
 
 On your phone, open the Strong app. Go to settings and click the "Export data" button. This will export a csv file
@@ -25,7 +27,12 @@ Entries)". Finally select the `out.csv` file we just generated, and all your Str
 
 ## FAQ
 
-Help, it says it could not find a translation entry for [ExerciseName].
+Help, it says it could not find a translation entry for [ExerciseName]. What now?
 
 - Simply open the file `exerciseNameConversion.py` and add your exercise to the dictionary in following convention:
   ![](images/dictionaryScreenshot.png)
+
+Help, my exercise does not exist in GymRun. What do I do?
+
+- Unfortunately, this is out of of my control. While you can add exercises into the GymRun app, the parser still won't
+  recognize them. This is a mistake on GymRun's part. Your best bet would be to choose the closest exercise to it.
