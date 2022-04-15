@@ -53,17 +53,5 @@ nameConversion = {"Bench Press (Barbell)": "Barbell Flat Bench Press",
                   "Triceps Pushdown (Cable - Straight Bar)": "Pulley Machine Triceps Press (standing)",
                   "Incline Bench Press (Barbell)": "Barbell Bench Press (incline)",
                   "Shrug (Dumbbell)": "Dumbbell Shrugs (standing)",
-                  "Chin Up (Assisted)": "Supported Machine Pull-ups| Underhand Medium Grip",
-
-                  # Improvised exercise names:
-                  "Lateral Raise (Cable)": "Single Arm Pulley Machine Lateral Raise (standing)",
-                  "Torso Rotation (Machine)": "Machine Side Crunch (seated)",
-                  "Face Pull (Cable)": "Pulley Machine Face Pulls (standing)",
-                  "Pullover (cable)": "Pulley Machine Lats Pullover (standing)",
-                  "Romanian Deadlift (Barbell)": "Barbell Romanian Deadlift",
-                  "Incline Dumbbell Shrug": "Dumbbell Shrugs (standing)",
-                  "Inverted Row (Bodyweight)": "Inverted Row",
-
-                  # My own exercises:
-                  "Seated Di0p (machine)": "Machine Triceps Press (seated)",
+                  "Chin Up (Assisted)": "Supported Machine Pull-ups| Underhand Medium Grip"
                   }
