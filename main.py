@@ -42,7 +42,7 @@ def main():
         strong_exercise_name = item[2]
         try:
             gym_run_item.append(name_conversion[strong_exercise_name])
-        except:
+        except KeyError:
             print("Could not find translation entry for \"" + strong_exercise_name + "\"")
             print("Please add an entry to the dictionary in exerciseNameConversion.py")
 
