@@ -19,7 +19,7 @@ def main():
             gym_run_list.append(["Date", "Time", "Exercise", "Set", "Weight", "Reps", "Note"])
             continue
 
-        ################### handling date and time ######################
+        # handling date and time
         strong_date_and_time = item[0]
         date_and_time_list = strong_date_and_time.split(" ")
 
@@ -38,7 +38,7 @@ def main():
         new_time = time_object.strftime("%H:%M:%S")
         gym_run_item.append(new_time)
 
-        ################### handling exercise names #####################
+        # handling exercise names
         strong_exercise_name = item[2]
         try:
             gym_run_item.append(name_conversion[strong_exercise_name])
@@ -46,11 +46,11 @@ def main():
             print("Could not find translation entry for \"" + strong_exercise_name + "\"")
             print("Please add an entry to the dictionary in exerciseNameConversion.py")
 
-        ############### handling set orders #####################
+        # handling set orders
         set_order = item[3]
         gym_run_item.append(set_order)
 
-        ############## handling weight #############
+        # handling weight
         weight = item[4]
         body_weight_exercises = ["Knee Raise (Captain's Chair)", "Plank", "Hanging Knee Raise", "Hanging Leg Raise"]
         if weight == "" and strong_exercise_name not in body_weight_exercises:
@@ -58,11 +58,11 @@ def main():
         else:
             gym_run_item.append(weight)
 
-        ########### handling reps #############
+        # handling reps
         reps = item[6]
         gym_run_item.append(reps)
 
-        ########## handling notes ############
+        # handling notes
         notes = item[10]
         gym_run_item.append(notes)
         gym_run_list.append(gym_run_item)
