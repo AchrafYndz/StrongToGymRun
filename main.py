@@ -1,76 +1,76 @@
 import csv
 import datetime
-from exerciseNameConversion import nameConversion
+from exerciseNameConversion import name_conversion
+
 
 def main():
-    strongList = []
-    gymRunList = []
+    strong_list = []
+    gym_run_list = []
 
     with open("csv_input/myStrongData.csv", "r") as inputFile:
-        myCsvFile = csv.reader(inputFile)
-        for row in myCsvFile:
-            strongList.append(row)
+        my_csv_file = csv.reader(inputFile)
+        for row in my_csv_file:
+            strong_list.append(row)
 
-    prevTimeObject = datetime.datetime.now()
-    for item in strongList:
-        gymRunItem = []
-        if item == strongList[0]:
-            gymRunList.append(["Date", "Time", "Exercise", "Set", "Weight", "Reps", "Note"])
+    prev_time_object = datetime.datetime.now()
+    for item in strong_list:
+        gym_run_item = []
+        if item == strong_list[0]:
+            gym_run_list.append(["Date", "Time", "Exercise", "Set", "Weight", "Reps", "Note"])
             continue
 
         ################### handling date and time ######################
-        strongDateAndTime = item[0]
-        dateAndTimeList = strongDateAndTime.split(" ")
+        strong_date_and_time = item[0]
+        date_and_time_list = strong_date_and_time.split(" ")
 
         # convert date format
-        date = dateAndTimeList[0]
-        dateList = date.split("-")
-        timeString = dateAndTimeList[1]
-        timeObject = datetime.datetime(int(dateList[0]), int(dateList[1]), int(dateList[2]), int(timeString[:2]),
-                                       int(timeString[3:5]), int(timeString[6:]))
-        if 0 <= abs(prevTimeObject - timeObject).total_seconds() <= 86400:
-            timeObject = prevTimeObject + datetime.timedelta(seconds=1)
-        newDay = timeObject.strftime("%d.%m.%y")
-        gymRunItem.append(newDay)
-        prevTimeObject = timeObject
+        date = date_and_time_list[0]
+        date_list = date.split("-")
+        time_string = date_and_time_list[1]
+        time_object = datetime.datetime(int(date_list[0]), int(date_list[1]), int(date_list[2]), int(time_string[:2]),
+                                        int(time_string[3:5]), int(time_string[6:]))
+        if 0 <= abs(prev_time_object - time_object).total_seconds() <= 86400:
+            time_object = prev_time_object + datetime.timedelta(seconds=1)
+        new_day = time_object.strftime("%d.%m.%y")
+        gym_run_item.append(new_day)
+        prev_time_object = time_object
 
-        newTime = timeObject.strftime("%H:%M:%S")
-        gymRunItem.append(newTime)
+        new_time = time_object.strftime("%H:%M:%S")
+        gym_run_item.append(new_time)
 
         ################### handling exercise names #####################
-        strongExerciseName = item[2]
+        strong_exercise_name = item[2]
         try:
-            gymRunItem.append(nameConversion[strongExerciseName])
+            gym_run_item.append(name_conversion[strong_exercise_name])
         except:
-            print("Could not find translation entry for \"" + strongExerciseName + "\"")
+            print("Could not find translation entry for \"" + strong_exercise_name + "\"")
             print("Please add an entry to the dictionary in exerciseNameConversion.py")
 
         ############### handling set orders #####################
-        setOrder = item[3]
-        gymRunItem.append(setOrder)
+        set_order = item[3]
+        gym_run_item.append(set_order)
 
         ############## handling weight #############
         weight = item[4]
-        bodyWeightExercises = ["Knee Raise (Captain's Chair)", "Plank", "Hanging Knee Raise", "Hanging Leg Raise"]
-        if weight == "" and strongExerciseName not in bodyWeightExercises:
-                gymRunItem.append("0")
+        body_weight_exercises = ["Knee Raise (Captain's Chair)", "Plank", "Hanging Knee Raise", "Hanging Leg Raise"]
+        if weight == "" and strong_exercise_name not in body_weight_exercises:
+            gym_run_item.append("0")
         else:
-            gymRunItem.append(weight)
+            gym_run_item.append(weight)
 
         ########### handling reps #############
         reps = item[6]
-        gymRunItem.append(reps)
+        gym_run_item.append(reps)
 
         ########## handling notes ############
         notes = item[10]
-        gymRunItem.append(notes)
-        # print(gymRunItem)
-        gymRunList.append(gymRunItem)
+        gym_run_item.append(notes)
+        gym_run_list.append(gym_run_item)
 
     with open("out.csv", "w") as outputFile:
-        newCsvFile = csv.writer(outputFile, lineterminator='\n')
-        for i in range(len(gymRunList)):
-            newCsvFile.writerow(gymRunList[i])
+        new_csv_file = csv.writer(outputFile, lineterminator='\n')
+        for i in range(len(gym_run_list)):
+            new_csv_file.writerow(gym_run_list[i])
 
 
 if __name__ == "__main__":
