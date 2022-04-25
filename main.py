@@ -1,13 +1,13 @@
 import csv
 import datetime
-from exerciseNameConversion import name_conversion
+from exercise_name_conversion import name_conversion
 
 
 def main():
     strong_list = []
     gym_run_list = []
 
-    with open("csv_input/myStrongData.csv", "r") as inputFile:
+    with open("csv_input/my_strong_data.csv", "r") as inputFile:
         my_csv_file = csv.reader(inputFile)
         for row in my_csv_file:
             strong_list.append(row)
@@ -44,7 +44,7 @@ def main():
             gym_run_item.append(name_conversion[strong_exercise_name])
         except KeyError:
             print("Could not find translation entry for \"" + strong_exercise_name + "\"")
-            print("Please add an entry to the dictionary in exerciseNameConversion.py")
+            print("Please add an entry to the dictionary in exercise_name_conversion.py")
 
         # handling set orders
         set_order = item[3]

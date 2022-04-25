@@ -14,7 +14,7 @@ git clone https://github.com/YAchrafY/StrongToGymRun.git
 Or alternatively, press the green "Code" button in the top right corner and select "Download ZIP", then extract the .zip
 file in your preferred working directory.
 
-![img_1.png](images/githubButton.png)
+![img_1.png](images/github_button.png)
 
 ## Usage
 
@@ -28,8 +28,8 @@ on "More" and then "Backup". Here you will find multiple ways to import/export d
 
 Help, it says it could not find a translation entry for [ExerciseName]. What now?
 
-- Simply open the file `exerciseNameConversion.py` and add your exercise to the dictionary in following convention:
-  ![](images/dictionaryScreenshot.png)
+- Simply open the file `exercise_name_conversion.py` and add your exercise to the dictionary in following convention:
+  ![](images/dictionary_screenshot.png)
 
 Help, my exercise does not exist in GymRun. What do I do?
 
