@@ -1,6 +1,6 @@
 # StrongToGymRun
 
-Convert all your Strong data to GymRun.
+## Convert all your Strong data to GymRun.
 ![](images/logo.png)
 
 ## Installation
@@ -26,12 +26,11 @@ on "More" and then "Backup". Here you will find multiple ways to import/export d
 
 ## FAQ
 
-Help, it says it could not find a translation entry for [ExerciseName]. What now?
+### Help, it says it could not find a translation entry for [ExerciseName]. What now?
 
 - Simply open the file `exercise_name_conversion.py` and add your exercise to the dictionary in following convention:
   ![](images/dictionary_screenshot.png)
 
-Help, my exercise does not exist in GymRun. What do I do?
+### Help, my exercise does not exist in GymRun. What do I do?
 
-- Unfortunately, this is out of of my control. While you can add exercises into the GymRun app, the parser still won't
-  recognize them. This is a mistake on GymRun's part. Your best bet would be to choose the closest exercise to it.
+- You can simply create a new exercise in the GymRun app. Just make sure you use the same name in the `name_conversion` dictionary.
