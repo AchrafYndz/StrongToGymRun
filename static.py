@@ -55,3 +55,9 @@ name_conversion = {"Bench Press (Barbell)": "Barbell Flat Bench Press",
                    "Shrug (Dumbbell)": "Dumbbell Shrugs (standing)",
                    "Chin Up (Assisted)": "Supported Machine Pull-ups, Underhand Medium Grip"
                    }
+
+bodyweight_exercises = ["Knee Raise (Captain's Chair)",
+                        "Plank",
+                        "Hanging Knee Raise",
+                        "Hanging Leg Raise"
+                        ]

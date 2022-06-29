@@ -28,8 +28,11 @@ on "More" and then "Backup". Here you will find multiple ways to import/export d
 
 ### Help, it says it could not find a translation entry for [ExerciseName]. What now?
 
-- Simply open the file `exercise_name_conversion.py` and add your exercise to the dictionary in following convention:
-  ![](images/dictionary_screenshot.png)
+- Simply open the file `static.py` and add your exercise to the dictionary in following convention:
+  ![name conversion dictionary](images/dictionary_screenshot.png)
+
+  If it's a bodyweight exercise, make sure you add it to the `bodyweight_exercises` list in the same file.
+  ![bodyweight exercises list](images/bodyweight_exercises.png)
 
 ### Help, my exercise does not exist in GymRun. What do I do?
 

@@ -1,6 +1,6 @@
 import csv
 import datetime
-from exercise_name_conversion import name_conversion
+from static import name_conversion, bodyweight_exercises
 
 
 def main():
@@ -53,8 +53,7 @@ def main():
 
         # handling weight
         weight = item[4]
-        body_weight_exercises = ["Knee Raise (Captain's Chair)", "Plank", "Hanging Knee Raise", "Hanging Leg Raise"]
-        if weight == "" and strong_exercise_name not in body_weight_exercises:
+        if weight == "" and strong_exercise_name not in bodyweight_exercises:
             gym_run_item.append("0")
         else:
             gym_run_item.append(weight)
