@@ -8,8 +8,9 @@ def main():
     gym_run_list = []
 
     with open("csv_input/my_strong_data.csv", "r") as inputFile:
-        my_csv_file = csv.reader(inputFile)
+        my_csv_file = csv.reader(inputFile, delimiter=';')
         for row in my_csv_file:
+            print(row)
             strong_list.append(row)
 
     prev_time_object = datetime.datetime.now()
@@ -68,7 +69,7 @@ def main():
         gym_run_list.append(gym_run_item)
 
     with open("out.csv", "w") as outputFile:
-        new_csv_file = csv.writer(outputFile, lineterminator='\n')
+        new_csv_file = csv.writer(outputFile, lineterminator='\n', delimiter=';')
         for i in range(len(gym_run_list)):
             new_csv_file.writerow(gym_run_list[i])
 
