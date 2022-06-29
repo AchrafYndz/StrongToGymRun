@@ -7,10 +7,11 @@ def main():
     strong_list = []
     gym_run_list = []
 
+    unknown_exercises = []
+
     with open("csv_input/my_strong_data.csv", "r") as inputFile:
         my_csv_file = csv.reader(inputFile, delimiter=';')
         for row in my_csv_file:
-            print(row)
             strong_list.append(row)
 
     prev_time_object = datetime.datetime.now()
@@ -44,8 +45,10 @@ def main():
         try:
             gym_run_item.append(name_conversion[strong_exercise_name])
         except KeyError:
-            print("Could not find translation entry for \"" + strong_exercise_name + "\"")
-            print("Please add an entry to the dictionary in exercise_name_conversion.py")
+            if strong_exercise_name not in unknown_exercises:
+                unknown_exercises.append(strong_exercise_name)
+                print("Could not find translation entry for \"" + strong_exercise_name + "\"")
+                
 
         # handling set orders
         set_order = item[3]
@@ -66,6 +69,10 @@ def main():
         notes = item[10]
         gym_run_item.append(notes)
         gym_run_list.append(gym_run_item)
+
+    if len(unknown_exercises) > 0:
+        print("---------------------------------------------------------------------------------")
+        print("Please add the necessary entries to the dictionary in exercise_name_conversion.py")
 
     with open("out.csv", "w") as outputFile:
         new_csv_file = csv.writer(outputFile, lineterminator='\n', delimiter=';')
