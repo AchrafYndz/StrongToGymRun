@@ -1,83 +1,11 @@
-import csv
-import datetime
-from static import name_conversion, bodyweight_exercises
+from strong_to_gymrun import strong_to_gymrun
+from gymrun_to_hevy import gymrun_to_hevy
+from fix_double import fix_double
 
 
 def main():
-    strong_list = []
-    gym_run_list = []
-
-    unknown_exercises = []
-
-    with open("csv_input/my_strong_data.csv", "r") as inputFile:
-        my_csv_file = csv.reader(inputFile, delimiter=';')
-        for row in my_csv_file:
-            strong_list.append(row)
-
-    prev_time_object = datetime.datetime.now()
-    for item in strong_list:
-        gym_run_item = []
-        if item == strong_list[0]:
-            gym_run_list.append(["Date", "Time", "Exercise", "Set", "Weight", "Reps", "Note"])
-            continue
-
-        # handling date and time
-        strong_date_and_time = item[0]
-        date_and_time_list = strong_date_and_time.split(" ")
-
-        # convert date format
-        date = date_and_time_list[0]
-        date_list = date.split("-")
-        time_string = date_and_time_list[1]
-        time_object = datetime.datetime(int(date_list[0]), int(date_list[1]), int(date_list[2]), int(time_string[:2]),
-                                        int(time_string[3:5]), int(time_string[6:]))
-        if 0 <= abs(prev_time_object - time_object).total_seconds() <= 86400:
-            time_object = prev_time_object + datetime.timedelta(seconds=1)
-        new_day = time_object.strftime("%d.%m.%y")
-        gym_run_item.append(new_day)
-        prev_time_object = time_object
-
-        new_time = time_object.strftime("%H:%M:%S")
-        gym_run_item.append(new_time)
-
-        # handling exercise names
-        strong_exercise_name = item[2]
-        try:
-            gym_run_item.append(name_conversion[strong_exercise_name])
-        except KeyError:
-            if strong_exercise_name not in unknown_exercises:
-                unknown_exercises.append(strong_exercise_name)
-                print("Could not find translation entry for \"" + strong_exercise_name + "\"")
-                
-
-        # handling set orders
-        set_order = item[3]
-        gym_run_item.append(set_order)
-
-        # handling weight
-        weight = item[4]
-        if weight == "" and strong_exercise_name not in bodyweight_exercises:
-            gym_run_item.append("0")
-        else:
-            gym_run_item.append(weight)
-
-        # handling reps
-        reps = item[6]
-        gym_run_item.append(reps)
-
-        # handling notes
-        notes = item[10]
-        gym_run_item.append(notes)
-        gym_run_list.append(gym_run_item)
-
-    if len(unknown_exercises) > 0:
-        print("---------------------------------------------------------------------------------")
-        print("Please add the necessary entries to the dictionary in exercise_name_conversion.py")
-
-    with open("out.csv", "w") as outputFile:
-        new_csv_file = csv.writer(outputFile, lineterminator='\n', delimiter=';')
-        for i in range(len(gym_run_list)):
-            new_csv_file.writerow(gym_run_list[i])
+    fix_double()
+    gymrun_to_hevy()
 
 
 if __name__ == "__main__":

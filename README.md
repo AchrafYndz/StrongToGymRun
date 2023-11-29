@@ -1,7 +1,7 @@
 # StrongToGymRun
 
 ## Convert all your Strong data to GymRun.
-![](images/logo.png)
+![](images/padded_logo.png)
 
 ## Installation
 
