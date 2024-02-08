@@ -11,11 +11,6 @@ Open the terminal and run:
 git clone https://github.com/YAchrafY/StrongToGymRun.git
 ```
 
-Or alternatively, press the green "Code" button in the top right corner and select "Download ZIP", then extract the .zip
-file in your preferred working directory.
-
-![img_1.png](images/github_button.png)
-
 ## Usage
 
 On your phone, open the Strong app. Go to settings and click the "Export data" button. This will export a csv file
