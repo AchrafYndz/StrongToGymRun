@@ -3,7 +3,7 @@ from datetime import datetime
 from static import conversion_name, bodyweight_exercises
 
 # Constants for the input and output CSV file names
-INPUT_FILE = 'fixed.csv'
+INPUT_FILE = 'csv_input/input.csv'
 OUTPUT_FILE = 'output.csv'
 
 # Constants for the input CSV file columns

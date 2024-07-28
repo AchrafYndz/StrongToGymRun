@@ -1,5 +1,5 @@
 venv
 __pycache__
 .idea
-csv_input/my_strong_data.csv
+csv_input/input.csv
 out.csv

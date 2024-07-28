@@ -12,7 +12,7 @@ def strong_to_gymrun():
 
     unknown_exercises = []
 
-    with open("csv_input/my_strong_data.csv", "r") as inputFile:
+    with open("csv_input/input.csv", "r") as inputFile:
         my_csv_file = csv.reader(inputFile, delimiter=';')
         for row in my_csv_file:
             strong_list.append(row)
