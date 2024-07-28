@@ -3,6 +3,9 @@ import datetime
 
 from static import name_conversion, bodyweight_exercises
 
+SECONDS_IN_A_DAY = 86400
+
+
 def strong_to_gymrun():
     strong_list = []
     gymrun_list = []
@@ -15,9 +18,10 @@ def strong_to_gymrun():
             strong_list.append(row)
 
     prev_time_object = datetime.datetime.now()
-    for item in strong_list:
+    for i, item in enumerate(strong_list):
         gymrun_item = []
-        if item == strong_list[0]:
+
+        if i == 0:
             gymrun_list.append(["Date", "Time", "Exercise", "Set", "Weight", "Reps", "Note"])
             continue
 
@@ -29,10 +33,18 @@ def strong_to_gymrun():
         date = date_and_time_list[0]
         date_list = date.split("-")
         time_string = date_and_time_list[1]
-        time_object = datetime.datetime(int(date_list[0]), int(date_list[1]), int(date_list[2]), int(time_string[:2]),
-                                        int(time_string[3:5]), int(time_string[6:]))
-        if 0 <= abs(prev_time_object - time_object).total_seconds() <= 86400:
+        time_object = datetime.datetime(
+            int(date_list[0]),
+            int(date_list[1]),
+            int(date_list[2]),
+            int(time_string[:2]),
+            int(time_string[3:5]),
+            int(time_string[6:])
+        )
+
+        if 0 <= abs(prev_time_object - time_object).total_seconds() <= SECONDS_IN_A_DAY:
             time_object = prev_time_object + datetime.timedelta(seconds=1)
+
         new_day = time_object.strftime("%d.%m.%y")
         gymrun_item.append(new_day)
         prev_time_object = time_object
@@ -69,7 +81,7 @@ def strong_to_gymrun():
         gymrun_item.append(notes)
         gymrun_list.append(gymrun_item)
 
-    if len(unknown_exercises) > 0:
+    if unknown_exercises:
         print("---------------------------------------------------------------------------------")
         print("Please add the necessary entries to the dictionary in exercise_name_conversion.py")
 
